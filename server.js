@@ -12,7 +12,13 @@ const helmet = require("helmet");
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'"], // this line breaks the interface but is required for fCC tests
+    styleSrc: ["'self'"]
+  }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
