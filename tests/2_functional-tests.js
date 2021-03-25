@@ -25,7 +25,7 @@ suite('Functional Tests', function () {
 
         done();
       });
-  });
+  }).timeout(10000);
 
   test("Viewing one stock and liking it: GET request to /api/stock-prices/", done => {
     chai.request(server)
@@ -39,7 +39,7 @@ suite('Functional Tests', function () {
         assert.equal(res.body.stockData.stock, "GOOG", "Response stock should still be GOOG");
         done();
       });
-  });
+  }).timeout(10000);
 
   test("Viewing the same stock and liking it again: GET request to /api/stock-prices/", done => {
     chai.request(server)
@@ -53,7 +53,7 @@ suite('Functional Tests', function () {
         assert.equal(res.body.stockData.stock, "GOOG", "Response stock should still be GOOG");
         done();
       });
-  });
+  }).timeout(10000);
 
   test("Viewing two stocks: GET request to /api/stock-prices/", done => {
     chai.request(server)
@@ -71,11 +71,11 @@ suite('Functional Tests', function () {
         rel_likes = res.body.stockData[1].rel_likes;
 
         assert.equal(res.body.stockData[0].rel_likes, -rel_likes, "The two rel_likes should be equal but negative");
-        
+
 
         done();
       });
-  });
+  }).timeout(10000);
 
   test("Viewing two stocks and liking them: GET request to /api/stock-prices/", done => {
     chai.request(server)
@@ -92,6 +92,6 @@ suite('Functional Tests', function () {
 
         done();
       });
-  });
+  }).timeout(10000);
 
 });
