@@ -9,7 +9,7 @@ module.exports = function (app) {
       const like = req.query.like;
 
       const response = await stockPriceRequest(stock, like, req.ip);
-      res.send({ stockData: { likes: response } });
+      res.send(response);
     });
 
 };

@@ -6,11 +6,10 @@ const server = require('../server');
 chai.use(chaiHttp);
 
 suite('Functional Tests', function () {
+  let likes; // store the current number of likes here
+  let rel_likes; // store to rel likes here
+
   test("Viewing one stock: GET request to /api/stock-prices/", done => {
-
-    let likes; // store the current number of likes here
-    let rel_likes; // store to rel likes here
-
     chai.request(server)
       .get("/api/stock-prices?stock=GOOG")
       .end((_err, res) => {
@@ -89,7 +88,7 @@ suite('Functional Tests', function () {
         assert.hasAllKeys(res.body.stockData[0], ["stock", "price", "rel_likes"], "Response should contain stock, price and rel_likes");
         assert.hasAllKeys(res.body.stockData[1], ["stock", "price", "rel_likes"], "Response should contain stock, price and rel_likes");
 
-        assert.equal(res.body.stockData[1].rel_likes, rel_likes + 1, "Rel likes should have increased due to liking MSFT");
+        assert.equal(res.body.stockData[1].rel_likes, rel_likes - 1, "Rel likes should have increased due to liking MSFT");
 
         done();
       });
