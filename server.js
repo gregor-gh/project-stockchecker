@@ -12,14 +12,15 @@ const helmet = require("helmet");
 
 const app = express();
 
+/*
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'"], // this line breaks the interface but is required for fCC tests
+    scriptSrc: ["'self'"], // this line breaks the interface but is required for fCC tests to pass
     styleSrc: ["'self'"]
   }
 }));
-
+*/
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
