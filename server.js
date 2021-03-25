@@ -12,7 +12,7 @@ const helmet = require("helmet");
 
 const app = express();
 
-/*
+
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
@@ -20,7 +20,7 @@ app.use(helmet.contentSecurityPolicy({
     styleSrc: ["'self'"]
   }
 }));
-*/
+
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
